@@ -14,9 +14,13 @@ class CreateRatingTable extends Migration
     {
         Schema::create('rating', function (Blueprint $table) {
               $table->increments('id');
+              $table->integer('user_id')->unsigned();
               $table->integer('rate_id');
+              $table->integer('rating');
               $table->string('rate_type');
-              $table->string('user_id');
+              $table->foreign('user_id')
+                        ->references('id')->on('users')
+                        ->onDelete('cascade');
               $table->timestamps();
         });
     }

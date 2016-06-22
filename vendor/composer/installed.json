@@ -2243,50 +2243,6 @@
         ]
     },
     {
-        "name": "davibennun/laravel-push-notification",
-        "version": "dev-laravel5",
-        "version_normalized": "dev-laravel5",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/davibennun/laravel-push-notification.git",
-            "reference": "b703b0fe02719a540139f5d26b73ac53a198b50d"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/davibennun/laravel-push-notification/zipball/b703b0fe02719a540139f5d26b73ac53a198b50d",
-            "reference": "b703b0fe02719a540139f5d26b73ac53a198b50d",
-            "shasum": ""
-        },
-        "require": {
-            "illuminate/support": "5.*",
-            "php": ">=5.3.0",
-            "sly/notification-pusher": "2.*"
-        },
-        "time": "2015-06-15 13:11:17",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Davibennun\\LaravelPushNotification": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "authors": [
-            {
-                "name": "DaviBenNun",
-                "email": "davi@andradenunes.org"
-            }
-        ],
-        "description": "Laravel package to send push notifications to mobile devices (apns, gcm)",
-        "keywords": [
-            "apns",
-            "gcm",
-            "laravel",
-            "notification",
-            "push"
-        ]
-    },
-    {
         "name": "phpunit/php-timer",
         "version": "1.0.8",
         "version_normalized": "1.0.8.0",
@@ -4397,6 +4353,54 @@
         "keywords": [
             "validator",
             "zf2"
+        ]
+    },
+    {
+        "name": "jrean/laravel-user-verification",
+        "version": "v2.2.14",
+        "version_normalized": "2.2.14.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jrean/laravel-user-verification.git",
+            "reference": "9d5ed27a68c8142cff39263dd4e54ad5c6344a6f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jrean/laravel-user-verification/zipball/9d5ed27a68c8142cff39263dd4e54ad5c6344a6f",
+            "reference": "9d5ed27a68c8142cff39263dd4e54ad5c6344a6f",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "5.0.*|5.1.*|5.2.*",
+            "php": ">=5.5.9"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^4.7.6"
+        },
+        "time": "2016-06-14 11:17:40",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Jrean\\UserVerification\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jean Ragouin",
+                "email": "go@askjong.com"
+            }
+        ],
+        "description": "User Email Verification For Laravel 5.*",
+        "keywords": [
+            "email verification",
+            "framework",
+            "laravel",
+            "user verification"
         ]
     }
 ]

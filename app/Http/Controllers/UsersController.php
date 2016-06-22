@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 //use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
+//use App\Http\Requests\Request;
 use App\Http\Requests\UploadRequest;
 use App\User;
 //use App\Book;
@@ -13,7 +13,7 @@ use Response;
 use App\Acme\Transformers\UserTransformer;
 use Input;
 
-class UsersAPIController extends APIController
+class UsersController extends APIController
 {
 
 	protected $userTransformer;
@@ -34,21 +34,16 @@ class UsersAPIController extends APIController
 		, 200);
 
 	}
-/*
-    public function create()
-    {
-    }*/
 
-    public function store(UserRequest $request){
-		if( ! Input::get('name') or ! Input::get('gender')){
-			return $this->setStatusCode(422)
-						->respondWithError('Parameters failed validation for an User.');
-		}
-		$user = user::create($request->all());
-		return $this->respondCreated('User sucessfully created.');
-		/*return $this->setStatusCode(201)->respond([
-			'message' => 'User sucessfully created.',
-		]);*/
+
+  public function store(Request $request){
+			if( ! Input::get('name') or ! Input::get('gender')){
+				return $this->setStatusCode(422)
+							->respondWithError('Parameters failed validation for an User.');
+			}
+			$user = User::create($request->all());
+			return $this->respondCreated('User sucessfully created.');
+
 	}
 
 	public function show($id)
@@ -59,27 +54,22 @@ class UsersAPIController extends APIController
 			return $this->respondNotFound('User does not exists');
 		}
 
-		return $this->respond([
+		return $this->respond(
 			$this->userTransformer->transform($user)
-		]);
-		//return Response::json([
-			//'data' => $user->toArray()
-			//'data' => $this->transform($user->toArray())
-			//'data'=>$this->userTransformer->transform($user)
-		//], 200);
+		);
 	}
 
 	public function upload(Request $request,$id){
 			$avatarURL = null;
-			$user = user::find($id);
+			$user = User::find($id);
       if( ! $user ){
 					return $this->respondNotFound('User does not exists');
 			}
       if($request->hasFile('avatarURL')){
           $imgUsrFileName = time().'.'.$request->file('avatarURL')->getClientOriginalExtension();
-          $imgUsrFilePath = '/images/parents/' .$imgUsrFileName;
+          $imgUsrFilePath = '/images/users/' .$imgUsrFileName;
           $request->file('image')->move(
-                base_path() . '/public/images/', $imgUsrFileName
+                base_path() . '/public/images/users/', $imgUsrFileName
           );
           $request['avatarURL'] = $imgUsrFilePath;
         	$user->update($request->all());
@@ -95,9 +85,9 @@ class UsersAPIController extends APIController
     }
 */
 
-    public function update(UserRequest $request, $id)
+    public function update(Request $request, $id)
     {
-    	$user = user::find($id);
+    	$user = User::find($id);
         if( ! $user ){
 			return $this->respondNotFound('User does not exists');
 		}else{
@@ -108,24 +98,13 @@ class UsersAPIController extends APIController
 
     public function destroy($id)
     {
-    	$user = user::find($id);
+    	$user = User::find($id);
         if( ! $user ){
 			return $this->respondNotFound('User does not exists');
 		}else{
-    		$user = user::findOrFail($id);
+    		$user = User::findOrFail($id);
         	$user->delete();
         	return $this->respondCreated('User sucessfully deleted.');
     	}
     }
-    /*
-	private function transformCollection($users){
-		return array_map([$this,'transform'], $users->toArray());
-	}
-
-	private function transform($user){
-		return[
-			'name' => $user['name'],
-			'gender' => $user['gender']
-		];
-	}*/
 }

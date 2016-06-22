@@ -49,18 +49,18 @@ class RestoranAPIController extends APIController
 
 		public function upload(Request $request,$id){
 				$imageURL = null;
-				$user = user::find($id);
-	      if( ! $user ){
+				$restoran = Restoran::find($id);
+	      if( ! $restoran ){
 						return $this->respondNotFound('User does not exists');
 				}
 	      if($request->hasFile('imageURL')){
 	          $imgUsrFileName = time().'.'.$request->file('imageURL')->getClientOriginalExtension();
-	          $imgUsrFilePath = '/images/parents/' .$imgUsrFileName;
+	          $imgUsrFilePath = '/images/restoran/' .$imgUsrFileName;
 	          $request->file('image')->move(
-	                base_path() . '/public/images/', $imgUsrFileName
+	                base_path() . '/public/images/restoran/', $imgUsrFileName
 	          );
 	          $request['imageURL'] = $imgUsrFilePath;
-	        	$user->update($request->all());
+	        	$restoran->update($request->all());
 	        	return $this->respondCreated('Photo sucessfully uploaded.');
 	        }else{
 	        	return $this->respondCreated('Doesnt provide an image.');
@@ -75,11 +75,35 @@ class RestoranAPIController extends APIController
 			}else{
 				$comment = new Komentar();
 				$comment->komentar = $request["komentar"];
-				$comment->komentar = $request["user_id"];
+				$comment->user_id = $request["user_id"];
 				restoran->komentar()->save($comment);
 				return $this->respondCreated('Komentar penginapan sucessfully created.');
 			}
 
+		}
+
+		public function getKomentar($id){
+			restoran = Restoran::find($id);
+			if( ! restoran ){
+				return $this->respondNotFound('penginapan does not exists');
+			}else{
+				//restoran->komentar()->save($comment);
+				return Response::json(
+					$this->komentarTransformer->transformCollection(restoran->komentar->all())
+					, 200);
+			}
+		}
+
+		public function getRating($id){
+			restoran = Restoran::find($id);
+			if( ! restoran ){
+				return $this->respondNotFound('penginapan does not exists');
+			}else{
+				//restoran->komentar()->save($comment);
+				return Response::json(
+					$this->ratingTransformer->transformCollection(restoran->rating->all())
+					, 200);
+			}
 		}
 
 		public function rating(Request $request,$id){

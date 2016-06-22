@@ -85,6 +85,10 @@ class ComposerStaticInitbe2cc10ad529e3181767d60998c60df3
             'League\\Flysystem\\' => 17,
             'Laravel\\Homestead\\' => 18,
         ),
+        'J' => 
+        array (
+            'Jrean\\UserVerification\\' => 23,
+        ),
         'I' => 
         array (
             'Interop\\Container\\' => 18,
@@ -259,6 +263,10 @@ class ComposerStaticInitbe2cc10ad529e3181767d60998c60df3
         array (
             0 => __DIR__ . '/..' . '/laravel/homestead/src',
         ),
+        'Jrean\\UserVerification\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jrean/laravel-user-verification/src',
+        ),
         'Interop\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
@@ -389,10 +397,6 @@ class ComposerStaticInitbe2cc10ad529e3181767d60998c60df3
             array (
                 0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
             ),
-            'Davibennun\\LaravelPushNotification' => 
-            array (
-                0 => __DIR__ . '/..' . '/davibennun/laravel-push-notification/src',
-            ),
         ),
         'C' => 
         array (
@@ -409,13 +413,14 @@ class ComposerStaticInitbe2cc10ad529e3181767d60998c60df3
 
     public static $classMap = array (
         'AddVerificationToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_04_21_052853_add_verification_to_users_table.php',
+        'App\\Acme\\Transformers\\BumperTransformer' => __DIR__ . '/../..' . '/app/Acme/Transformers/BumperTransformer.php',
         'App\\Acme\\Transformers\\JenisTransformer' => __DIR__ . '/../..' . '/app/Acme/Transformers/JenisTransformer.php',
+        'App\\Acme\\Transformers\\KomentarTransformer' => __DIR__ . '/../..' . '/app/Acme/Transformers/KomentarTransformer.php',
+        'App\\Acme\\Transformers\\PenginapanTransformer' => __DIR__ . '/../..' . '/app/Acme/Transformers/PenginapanTransformer.php',
         'App\\Acme\\Transformers\\ReminderTransformer' => __DIR__ . '/../..' . '/app/Acme/Transformers/ReminderTransformer.php',
-        'App\\Acme\\Transformers\\RestoranTransformer' => __DIR__ . '/../..' . '/app/Acme/Transformers/ChildTransformer.php',
-        'App\\Acme\\Transformers\\TrackerTransformer' => __DIR__ . '/../..' . '/app/Acme/Transformers/TrackerTransformer.php',
+        'App\\Acme\\Transformers\\RestoranTransformer' => __DIR__ . '/../..' . '/app/Acme/Transformers/RestoranTransformer.php',
         'App\\Acme\\Transformers\\Transformer' => __DIR__ . '/../..' . '/app/Acme/Transformers/Transformer.php',
         'App\\Acme\\Transformers\\UserTransformer' => __DIR__ . '/../..' . '/app/Acme/Transformers/UserTransformer.php',
-        'App\\Acme\\Transformers\\VaccineHistoryTransformer' => __DIR__ . '/../..' . '/app/Acme/Transformers/VaccineHistoryTransformer.php',
         'App\\Bumper' => __DIR__ . '/../..' . '/app/Bumper.php',
         'App\\Console\\Commands\\ImmunizationReminder' => __DIR__ . '/../..' . '/app/Console/Commands/ImmunizationReminder.php',
         'App\\Console\\Commands\\Inspire' => __DIR__ . '/../..' . '/app/Console/Commands/Inspire.php',
@@ -427,23 +432,22 @@ class ComposerStaticInitbe2cc10ad529e3181767d60998c60df3
         'App\\Http\\Controllers\\AttributesAPIController' => __DIR__ . '/../..' . '/app/Http/Controllers/AttributesAPIController.php',
         'App\\Http\\Controllers\\Auth\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AuthController.php',
         'App\\Http\\Controllers\\Auth\\PasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/PasswordController.php',
-        'App\\Http\\Controllers\\ChildrenAPIController' => __DIR__ . '/../..' . '/app/Http/Controllers/ChildrenAPIController.php',
+        'App\\Http\\Controllers\\BumperController' => __DIR__ . '/../..' . '/app/Http/Controllers/BumperController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\JenisAPIController' => __DIR__ . '/../..' . '/app/Http/Controllers/JenisController.php',
+        'App\\Http\\Controllers\\JenisController' => __DIR__ . '/../..' . '/app/Http/Controllers/JenisController.php',
+        'App\\Http\\Controllers\\KomentarController' => __DIR__ . '/../..' . '/app/Http/Controllers/KomentarController.php',
+        'App\\Http\\Controllers\\PenginapanController' => __DIR__ . '/../..' . '/app/Http/Controllers/PenginapanController.php',
         'App\\Http\\Controllers\\RestoranAPIController' => __DIR__ . '/../..' . '/app/Http/Controllers/RestoranController.php',
         'App\\Http\\Controllers\\UsersAPIController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
-        'App\\Http\\Controllers\\VaccineHistoriesAPIController' => __DIR__ . '/../..' . '/app/Http/Controllers/VaccineHistoriesAPIController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\JenisRequest' => __DIR__ . '/../..' . '/app/Http/Requests/JenisRequest.php',
-        'App\\Http\\Requests\\ReminderRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ReminderRequest.php',
         'App\\Http\\Requests\\Request' => __DIR__ . '/../..' . '/app/Http/Requests/Request.php',
         'App\\Http\\Requests\\RestoranRequest' => __DIR__ . '/../..' . '/app/Http/Requests/RestoranRequest.php',
         'App\\Http\\Requests\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserRequest.php',
-        'App\\Http\\Requests\\VaccineHistoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/VaccineHistoryRequest.php',
         'App\\Jenis' => __DIR__ . '/../..' . '/app/Jenis.php',
         'App\\Jobs\\Job' => __DIR__ . '/../..' . '/app/Jobs/Job.php',
         'App\\Komentar' => __DIR__ . '/../..' . '/app/Komentar.php',
@@ -510,10 +514,6 @@ class ComposerStaticInitbe2cc10ad529e3181767d60998c60df3
         'Crypt_TripleDES' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/Crypt/TripleDES.php',
         'Crypt_Twofish' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/Crypt/Twofish.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
-        'Davibennun\\LaravelPushNotification\\App' => __DIR__ . '/..' . '/davibennun/laravel-push-notification/src/Davibennun/LaravelPushNotification/App.php',
-        'Davibennun\\LaravelPushNotification\\Facades\\PushNotification' => __DIR__ . '/..' . '/davibennun/laravel-push-notification/src/Davibennun/LaravelPushNotification/Facades/PushNotification.php',
-        'Davibennun\\LaravelPushNotification\\LaravelPushNotificationServiceProvider' => __DIR__ . '/..' . '/davibennun/laravel-push-notification/src/Davibennun/LaravelPushNotification/LaravelPushNotificationServiceProvider.php',
-        'Davibennun\\LaravelPushNotification\\PushNotification' => __DIR__ . '/..' . '/davibennun/laravel-push-notification/src/Davibennun/LaravelPushNotification/PushNotification.php',
         'Doctrine\\Common\\Inflector\\Inflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector/Inflector.php',
         'Doctrine\\Instantiator\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator/Exception/ExceptionInterface.php',
         'Doctrine\\Instantiator\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator/Exception/InvalidArgumentException.php',
@@ -1647,6 +1647,15 @@ class ComposerStaticInitbe2cc10ad529e3181767d60998c60df3
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
+        'Jrean\\UserVerification\\Exceptions\\ModelNotCompliantException' => __DIR__ . '/..' . '/jrean/laravel-user-verification/src/Exceptions/ModelNotCompliantException.php',
+        'Jrean\\UserVerification\\Exceptions\\TokenMismatchException' => __DIR__ . '/..' . '/jrean/laravel-user-verification/src/Exceptions/TokenMismatchException.php',
+        'Jrean\\UserVerification\\Exceptions\\UserIsVerifiedException' => __DIR__ . '/..' . '/jrean/laravel-user-verification/src/Exceptions/UserIsVerifiedException.php',
+        'Jrean\\UserVerification\\Exceptions\\UserNotFoundException' => __DIR__ . '/..' . '/jrean/laravel-user-verification/src/Exceptions/UserNotFoundException.php',
+        'Jrean\\UserVerification\\Facades\\UserVerification' => __DIR__ . '/..' . '/jrean/laravel-user-verification/src/Facades/UserVerification.php',
+        'Jrean\\UserVerification\\Traits\\RedirectsUsers' => __DIR__ . '/..' . '/jrean/laravel-user-verification/src/Traits/RedirectsUsers.php',
+        'Jrean\\UserVerification\\Traits\\VerifiesUsers' => __DIR__ . '/..' . '/jrean/laravel-user-verification/src/Traits/VerifiesUsers.php',
+        'Jrean\\UserVerification\\UserVerification' => __DIR__ . '/..' . '/jrean/laravel-user-verification/src/UserVerification.php',
+        'Jrean\\UserVerification\\UserVerificationServiceProvider' => __DIR__ . '/..' . '/jrean/laravel-user-verification/src/UserVerificationServiceProvider.php',
         'Laravel\\Homestead\\MakeCommand' => __DIR__ . '/..' . '/laravel/homestead/src/MakeCommand.php',
         'League\\Flysystem\\AdapterInterface' => __DIR__ . '/..' . '/league/flysystem/src/AdapterInterface.php',
         'League\\Flysystem\\Adapter\\AbstractAdapter' => __DIR__ . '/..' . '/league/flysystem/src/Adapter/AbstractAdapter.php',

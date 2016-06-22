@@ -16,31 +16,26 @@ class JenisController extends APIController
 
 	function __construct(JenisTransformer $jenisTransformer){
 		//['only' => ['store','update','destroy','upload','show']]
-		//$this->middleware('jwt.auth');
+		$this->middleware('jwt.auth');
 		$this->jenisTransformer = $jenisTransformer;
 		//$this->middleware('jwt.refresh');
 
 	}
 
-	public function index()
-	{
-		$jenis = Jenis::all();
-		return Response::json(
-			$this->jenisTransformer->transformCollection($jenis->all())
-		, 200);
+		public function index()
+		{
+			$jenis = Jenis::all();
+			return Response::json(
+				$this->jenisTransformer->transformCollection($jenis->all())
+				, 200);
 
-	}
-/*
-    public function create()
-    {
-    }*/
+		}
+
 
     public function store(Request $request){
 			$jenis = Jenis::create($request->all());
 			return $this->respondCreated('Jenis sucessfully created.');
-			/*return $this->setStatusCode(201)->respond([
-				'message' => 'Jenis sucessfully created.',
-			]);*/
+
 		}
 
 	public function show($id)
@@ -51,9 +46,9 @@ class JenisController extends APIController
 			return $this->respondNotFound('Jenis does not exists');
 		}
 
-		return $this->respond([
+		return $this->respond(
 			$this->jenisTransformer->transform($jenis)
-		]);
+		);
 	}
 
 

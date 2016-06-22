@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Fasilitas extends Model
 {
-    protected $fillable = ['nama','jenis_id'];
+    protected $fillable = ['name','jenis_id'];
 
     public function jenis(){
 		    return $this->belongsTo('App\Jenis');

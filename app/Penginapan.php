@@ -15,7 +15,7 @@ class Penginapan extends Model
 
     public function rating(){
         //return $this->hasMany('\App\BumperRating');
-        return $this->morphMany('App\Rating', 'rating');
+        return $this->morphMany('App\Rating', 'rate');
     }
     public function komentar(){
         return $this->morphMany('\App\Komentar','comment');

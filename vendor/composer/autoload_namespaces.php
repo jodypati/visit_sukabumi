@@ -22,7 +22,6 @@ return array(
     'JakubOnderka\\PhpConsoleColor' => array($vendorDir . '/jakub-onderka/php-console-color/src'),
     'File' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib'),
-    'Davibennun\\LaravelPushNotification' => array($vendorDir . '/davibennun/laravel-push-notification/src'),
     'Crypt' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Cron' => array($vendorDir . '/mtdowling/cron-expression/src'),
 );

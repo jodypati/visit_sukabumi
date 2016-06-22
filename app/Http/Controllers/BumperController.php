@@ -48,18 +48,18 @@ class BumperController extends APIController
 
 	public function upload(Request $request,$id){
 			$imageURL = null;
-			$user = user::find($id);
-      if( ! $user ){
+			$bumper = Bumper::find($id);
+      if( ! $bumper ){
 					return $this->respondNotFound('User does not exists');
 			}
       if($request->hasFile('imageURL')){
           $imgUsrFileName = time().'.'.$request->file('imageURL')->getClientOriginalExtension();
-          $imgUsrFilePath = '/images/parents/' .$imgUsrFileName;
+          $imgUsrFilePath = '/images/bumper/' .$imgUsrFileName;
           $request->file('image')->move(
-                base_path() . '/public/images/', $imgUsrFileName
+                base_path() . '/public/images/bumper/', $imgUsrFileName
           );
           $request['imageURL'] = $imgUsrFilePath;
-        	$user->update($request->all());
+        	$bumper->update($request->all());
         	return $this->respondCreated('Photo sucessfully uploaded.');
         }else{
         	return $this->respondCreated('Doesnt provide an image.');
@@ -74,11 +74,35 @@ class BumperController extends APIController
 		}else{
 			$comment = new Komentar();
 			$comment->komentar = $request["komentar"];
-			$comment->komentar = $request["user_id"];
+			$comment->user_id = $request["user_id"];
 			$bumper->komentar()->save($comment);
 			return $this->respondCreated('Komentar penginapan sucessfully created.');
 		}
 
+	}
+
+	public function getKomentar($id){
+		bumper = Bumper::find($id);
+		if( ! bumper ){
+			return $this->respondNotFound('penginapan does not exists');
+		}else{
+			//bumper->komentar()->save($comment);
+			return Response::json(
+				$this->komentarTransformer->transformCollection(bumper->komentar->all())
+				, 200);
+		}
+	}
+
+	public function getRating($id){
+		bumper = Bumper::find($id);
+		if( ! bumper ){
+			return $this->respondNotFound('penginapan does not exists');
+		}else{
+			//bumper->komentar()->save($comment);
+			return Response::json(
+				$this->ratingTransformer->transformCollection(bumper->rating->all())
+				, 200);
+		}
 	}
 
 	public function rating(Request $request,$id){
