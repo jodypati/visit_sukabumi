@@ -14,6 +14,7 @@ class KomentarController extends APIController
 	protected $komentarTransformer;
 
 	function __construct(KomentarTransformer $komentarTransformer){
+		$this->middleware('jwt.auth');
 		$this->komentarTransformer = $komentarTransformer;
 	}
 
@@ -43,7 +44,7 @@ class KomentarController extends APIController
 
 	}
 
-	
+
 	public function show($id, $id2 = null)
 	{
 

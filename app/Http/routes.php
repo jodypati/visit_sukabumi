@@ -47,6 +47,7 @@ Route::post('bumper/{id}/rating/add','BumperController@rating');
 Route::post('bumper/{id}/upload','BumperController@upload');
 
 Route::resource('penginapan','PenginapanController');
+Route::resource('bumper','BumperController');
 Route::resource('user','UsersController');
 Route::resource('restoran','RestoranController');
 Route::resource('jenis','JenisController');

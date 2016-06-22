@@ -1,6 +1,4 @@
-
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -14,14 +12,14 @@ use Response;
 use App\Acme\Transformers\RestoranTransformer;
 use Input;
 
-class RestoranAPIController extends APIController
+class RestoranController extends APIController
 {
 
 	protected $restoranTransformer;
 
 	function __construct(RestoranTransformer $restoranTransformer){
 		//['only' => ['store','update','destroy','upload','show']]
-		//$this->middleware('jwt.auth');
+		$this->middleware('jwt.auth');
 		$this->restoranTransformer = $restoranTransformer;
 		//$this->middleware('jwt.refresh');
 
@@ -69,52 +67,52 @@ class RestoranAPIController extends APIController
 		}
 
 		public function komentar(Request $request,$id){
-			restoran = Restoran::find($id);
-			if( ! restoran ){
+			$restoran = Restoran::find($id);
+			if( ! $restoran ){
 				return $this->respondNotFound('penginapan does not exists');
 			}else{
 				$comment = new Komentar();
 				$comment->komentar = $request["komentar"];
 				$comment->user_id = $request["user_id"];
-				restoran->komentar()->save($comment);
+				$restoran->komentar()->save($comment);
 				return $this->respondCreated('Komentar penginapan sucessfully created.');
 			}
 
 		}
 
 		public function getKomentar($id){
-			restoran = Restoran::find($id);
-			if( ! restoran ){
+			$restoran = Restoran::find($id);
+			if( ! $restoran ){
 				return $this->respondNotFound('penginapan does not exists');
 			}else{
 				//restoran->komentar()->save($comment);
 				return Response::json(
-					$this->komentarTransformer->transformCollection(restoran->komentar->all())
+					$this->komentarTransformer->transformCollection($restoran->komentar->all())
 					, 200);
 			}
 		}
 
 		public function getRating($id){
-			restoran = Restoran::find($id);
-			if( ! restoran ){
+			$restoran = Restoran::find($id);
+			if( ! $restoran ){
 				return $this->respondNotFound('penginapan does not exists');
 			}else{
-				//restoran->komentar()->save($comment);
+				//$restoran->komentar()->save($comment);
 				return Response::json(
-					$this->ratingTransformer->transformCollection(restoran->rating->all())
+					$this->ratingTransformer->transformCollection($restoran->rating->all())
 					, 200);
 			}
 		}
 
 		public function rating(Request $request,$id){
-			restoran = Restoran::find($id);
-			if( ! restoran ){
+			$restoran = Restoran::find($id);
+			if( ! $restoran ){
 				return $this->respondNotFound('penginapan does not exists');
 			}else{
 				$rating = new Rating();
 				$rating->rating = $request["rating"];
 				$rating->user_id = $request["user_id"];
-				restoran->rating()->save($rating);
+				$restoran->rating()->save($rating);
 				return $this->respondCreated('Rating penginapan sucessfully created.');
 			}
 

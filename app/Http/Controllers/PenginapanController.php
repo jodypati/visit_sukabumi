@@ -20,7 +20,7 @@ class PenginapanController extends APIController
 	protected $ratingTransformer;
 
 	function __construct(PenginapanTransformer $penginapanTransformer,KomentarTransformer $komentarTransformer,RatingTransformer $ratingTransformer){
-		//$this->middleware('jwt.auth');
+		$this->middleware('jwt.auth');
 		$this->penginapanTransformer = $penginapanTransformer;
 		$this->komentarTransformer = $komentarTransformer;
 		$this->ratingTransformer = $ratingTransformer;

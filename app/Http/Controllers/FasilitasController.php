@@ -12,13 +12,13 @@ use Response;
 use App\Acme\Transformers\FasilitasTransformer;
 use Input;
 
-class FasilitasAPIController extends APIController
+class FasilitasController extends APIController
 {
 
 	protected $fasilitasTransformer;
 
 	function __construct(FasilitasTransformer $fasilitasTransformer){
-		$this->middleware('jwt.auth',['only' => 'store']);
+		$this->middleware('jwt.auth');
 		$this->fasilitasTransformer = $fasilitasTransformer;
 	}
 
@@ -41,15 +41,15 @@ class FasilitasAPIController extends APIController
 	}
 
 	public function penginapan($id,$id2){
-		Fasilitas::find($id)->penginapan()attach($id2);
+		Fasilitas::find($id)->penginapan()->attach($id2);
 	}
 
 	public function restoran($id,$id2){
-		Fasilitas::find($id)->restoran()attach($id2);
+		Fasilitas::find($id)->restoran()->attach($id2);
 	}
 
 	public function bumper($id,$id2){
-		Fasilitas::find($id)->bumper()attach($id2);
+		Fasilitas::find($id)->bumper()->attach($id2);
 	}
 
 	public function show($id)

@@ -82,25 +82,25 @@ class BumperController extends APIController
 	}
 
 	public function getKomentar($id){
-		bumper = Bumper::find($id);
-		if( ! bumper ){
+		$bumper = Bumper::find($id);
+		if( ! $bumper ){
 			return $this->respondNotFound('penginapan does not exists');
 		}else{
-			//bumper->komentar()->save($comment);
+			//$bumper->komentar()->save($comment);
 			return Response::json(
-				$this->komentarTransformer->transformCollection(bumper->komentar->all())
+				$this->komentarTransformer->transformCollection($bumper->komentar->all())
 				, 200);
 		}
 	}
 
 	public function getRating($id){
-		bumper = Bumper::find($id);
-		if( ! bumper ){
+		$bumper = Bumper::find($id);
+		if( ! $bumper ){
 			return $this->respondNotFound('penginapan does not exists');
 		}else{
-			//bumper->komentar()->save($comment);
+			//$bumper->komentar()->save($comment);
 			return Response::json(
-				$this->ratingTransformer->transformCollection(bumper->rating->all())
+				$this->ratingTransformer->transformCollection($bumper->rating->all())
 				, 200);
 		}
 	}
