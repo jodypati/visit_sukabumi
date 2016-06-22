@@ -15,24 +15,24 @@ use Input;
 
 class UsersAPIController extends APIController
 {
-	
+
 	protected $userTransformer;
-	
+
 	function __construct(UserTransformer $userTransformer){
 		//['only' => ['store','update','destroy','upload','show']]
-		$this->middleware('jwt.auth');		
+		$this->middleware('jwt.auth');
 		$this->userTransformer = $userTransformer;
 		//$this->middleware('jwt.refresh');
 
 	}
-	
+
 	public function index()
 	{
 		$users = User::all();
 		return Response::json(
 			$this->userTransformer->transformCollection($users->all())
 		, 200);
-		
+
 	}
 /*
     public function create()
@@ -58,7 +58,7 @@ class UsersAPIController extends APIController
 		if( ! $user ){
 			return $this->respondNotFound('User does not exists');
 		}
-		
+
 		return $this->respond([
 			$this->userTransformer->transform($user)
 		]);
@@ -70,28 +70,24 @@ class UsersAPIController extends APIController
 	}
 
 	public function upload(Request $request,$id){
-		$imgUsrFileName = null;
-		$imgUsrFilePath = null;
-        $user = user::find($id);
-        if( ! $user ){
-			return $this->respondNotFound('User does not exists');
-		}
-        if($request->hasFile('image')){
-            $imgUsrFileName = time().'.'.$request->file('image')->getClientOriginalExtension();
-            $imgUsrFilePath = '/images/parents/' .$imgUsrFileName;
-            $request->file('image')->move(
-                base_path() . '/public/images/parents/', $imgUsrFileName
-            );
-            $request['imgUsrFileName'] = $imgUsrFileName;
-            $request['imgUsrFilePath'] = $imgUsrFilePath;
-
-            
+			$avatarURL = null;
+			$user = user::find($id);
+      if( ! $user ){
+					return $this->respondNotFound('User does not exists');
+			}
+      if($request->hasFile('avatarURL')){
+          $imgUsrFileName = time().'.'.$request->file('avatarURL')->getClientOriginalExtension();
+          $imgUsrFilePath = '/images/parents/' .$imgUsrFileName;
+          $request->file('image')->move(
+                base_path() . '/public/images/', $imgUsrFileName
+          );
+          $request['avatarURL'] = $imgUsrFilePath;
         	$user->update($request->all());
         	return $this->respondCreated('Photo sucessfully uploaded.');
         }else{
         	return $this->respondCreated('Doesnt provide an image.');
         }
-        
+
 	}
 /*
     public function edit($id)
@@ -125,7 +121,7 @@ class UsersAPIController extends APIController
 	private function transformCollection($users){
 		return array_map([$this,'transform'], $users->toArray());
 	}
-	
+
 	private function transform($user){
 		return[
 			'name' => $user['name'],

@@ -11,9 +11,11 @@ use Illuminate\Http\Response as StatusCode;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+//use Jrean\UserVerification\Traits\VerifiesUsers;
+//use Jrean\UserVerification\Facades\UserVerification;
 
 class APIController extends Controller{
-
+	//use VerifiesUsers;
 	protected $userTransformer;
 
 	function __construct(UserTransformer $userTransformer){
@@ -34,7 +36,13 @@ class APIController extends Controller{
 
 	   	$token = JWTAuth::fromUser($user);
       $user = $this->userTransformer->transform($user);
-	   	return Response::json(compact('token','user'));
+			if ($user){
+					//UserVerification::generate($user);
+					//$user->password = $password;
+					//UserVerification::send($user, '[No-Reply] Verify your email address');
+					return Response::json(compact('token','user'));
+      }
+
 	}
 	public function authenticate(Request $request){
 		$credentials = $request->only('email', 'password');
@@ -51,8 +59,6 @@ class APIController extends Controller{
 		}
 		return response()->json(compact('token','user'));
 	}
-
-
 
 	protected $statusCode = 200;
 

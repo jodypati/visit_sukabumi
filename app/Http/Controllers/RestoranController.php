@@ -44,9 +44,28 @@ class RestoranAPIController extends APIController
 
 			$restoran = Restoran::create($request->all());
 			return $this->respondCreated('Restoran sucessfully created.');
-			/*return $this->setStatusCode(201)->respond([
-				'message' => 'Restoran sucessfully created.',
-			]);*/
+
+		}
+
+		public function upload(Request $request,$id){
+				$imageURL = null;
+				$user = user::find($id);
+	      if( ! $user ){
+						return $this->respondNotFound('User does not exists');
+				}
+	      if($request->hasFile('imageURL')){
+	          $imgUsrFileName = time().'.'.$request->file('imageURL')->getClientOriginalExtension();
+	          $imgUsrFilePath = '/images/parents/' .$imgUsrFileName;
+	          $request->file('image')->move(
+	                base_path() . '/public/images/', $imgUsrFileName
+	          );
+	          $request['imageURL'] = $imgUsrFilePath;
+	        	$user->update($request->all());
+	        	return $this->respondCreated('Photo sucessfully uploaded.');
+	        }else{
+	        	return $this->respondCreated('Doesnt provide an image.');
+	        }
+
 		}
 
 		public function komentar(Request $request,$id){
