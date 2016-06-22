@@ -54,7 +54,7 @@ class RestoranController extends APIController
 	      if($request->hasFile('imageURL')){
 	          $imgUsrFileName = time().'.'.$request->file('imageURL')->getClientOriginalExtension();
 	          $imgUsrFilePath = '/images/restoran/' .$imgUsrFileName;
-	          $request->file('image')->move(
+	          $request->file('imageURL')->move(
 	                base_path() . '/public/images/restoran/', $imgUsrFileName
 	          );
 	          $request['imageURL'] = $imgUsrFilePath;

@@ -68,7 +68,7 @@ class UsersController extends APIController
       if($request->hasFile('avatarURL')){
           $imgUsrFileName = time().'.'.$request->file('avatarURL')->getClientOriginalExtension();
           $imgUsrFilePath = '/images/users/' .$imgUsrFileName;
-          $request->file('image')->move(
+          $request->file('avatarURL')->move(
                 base_path() . '/public/images/users/', $imgUsrFileName
           );
           $request['avatarURL'] = $imgUsrFilePath;

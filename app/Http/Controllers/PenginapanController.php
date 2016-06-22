@@ -49,7 +49,7 @@ class PenginapanController extends APIController
       if($request->hasFile('imageURL')){
           $imgUsrFileName = time().'.'.$request->file('imageURL')->getClientOriginalExtension();
           $imgUsrFilePath = '/images/penginapan/' .$imgUsrFileName;
-          $request->file('image')->move(
+          $request->file('imageURL')->move(
                 base_path() . '/public/images/penginapan/', $imgUsrFileName
           );
           $request['imageURL'] = $imgUsrFilePath;

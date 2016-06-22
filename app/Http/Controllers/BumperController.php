@@ -55,7 +55,7 @@ class BumperController extends APIController
       if($request->hasFile('imageURL')){
           $imgUsrFileName = time().'.'.$request->file('imageURL')->getClientOriginalExtension();
           $imgUsrFilePath = '/images/bumper/' .$imgUsrFileName;
-          $request->file('image')->move(
+          $request->file('imageURL')->move(
                 base_path() . '/public/images/bumper/', $imgUsrFileName
           );
           $request['imageURL'] = $imgUsrFilePath;
