@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePenginpanKomentarTable extends Migration
+class CreateKomentarTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,14 @@ class CreatePenginpanKomentarTable extends Migration
      */
     public function up()
     {
-        Schema::create('penginapan_komentar', function (Blueprint $table) {
+        Schema::create('komentar', function (Blueprint $table) {
               $table->increments('id');
-              $table->integer('penginapan_id')->unsigned();
               $table->string('komentar');
-              $table->foreign('penginapan_id')
-                        ->references('id')->on('penginapan')
+              $table->integer('comment_id');
+              $table->string('comment_type');
+              $table->integer('user_id')->unsigned();
+              $table->foreign('user_id')
+                        ->references('id')->on('user')
                         ->onDelete('cascade');
               $table->timestamps();
         });
@@ -30,6 +32,6 @@ class CreatePenginpanKomentarTable extends Migration
      */
     public function down()
     {
-        Schema::drop('penginapan_komentar');
+        Schema::drop('komentar');
     }
 }

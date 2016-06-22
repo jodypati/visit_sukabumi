@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJenisRestoranTable extends Migration
+class CreateJenisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateJenisRestoranTable extends Migration
      */
     public function up()
     {
-        Schema::create('jenis_restoran', function (Blueprint $table) {
+        Schema::create('jenis', function (Blueprint $table) {
         $table->increments('id');
-        $table->string('name');
+        $table->string('nama');
         $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ class CreateJenisRestoranTable extends Migration
      */
     public function down()
     {
-        Schema::drop('jenis_restoran');
+        Schema::drop('jenis');
     }
 }

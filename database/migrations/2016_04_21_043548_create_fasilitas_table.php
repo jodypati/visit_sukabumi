@@ -17,7 +17,7 @@ class CreateFasilitasTable extends Migration
             $table->integer('jenis_id')->unsigned();
             $table->string('name');
             $table->foreign('jenis_id')
-                      ->references('id')->on('jenis_fasilitas')
+                      ->references('id')->on('jenis')
                       ->onDelete('cascade');
             $table->timestamps();
         });

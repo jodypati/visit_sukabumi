@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBumperKomentarTable extends Migration
+class CreateRatingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,11 @@ class CreateBumperKomentarTable extends Migration
      */
     public function up()
     {
-        Schema::create('bumper_komentar', function (Blueprint $table) {
+        Schema::create('rating', function (Blueprint $table) {
               $table->increments('id');
-              $table->integer('bumper_id')->unsigned();
-              $table->string('komentar');
-              $table->foreign('bumper_id')
-                        ->references('id')->on('bumper')
-                        ->onDelete('cascade');
+              $table->integer('rate_id');
+              $table->string('rate_type');
+              $table->string('user_id');
               $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateBumperKomentarTable extends Migration
      */
     public function down()
     {
-        Schema::drop('bumper_komentar');
+        Schema::drop('rating');
     }
 }

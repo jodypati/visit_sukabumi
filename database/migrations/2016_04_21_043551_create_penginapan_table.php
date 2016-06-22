@@ -25,7 +25,7 @@ class CreatePenginapanTable extends Migration
             $table->string('telepon');
             $table->string('email');
             $table->foreign('jenis_id')
-                      ->references('id')->on('jenis_penginapan')
+                      ->references('id')->on('jenis')
                       ->onDelete('cascade');
             $table->timestamps();
         });

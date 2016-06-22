@@ -23,7 +23,7 @@ class CreateRestoranTable extends Migration
             $table->integer('hidangan');
             $table->string('telepon');
             $table->foreign('jenis_id')
-                      ->references('id')->on('jenis_restoran')
+                      ->references('id')->on('jenis')
                       ->onDelete('cascade');
             $table->timestamps();
         });
