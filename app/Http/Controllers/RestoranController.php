@@ -57,8 +57,8 @@ class RestoranController extends APIController
 	          $request->file('imageURL')->move(
 	                base_path() . '/public/images/restoran/', $imgUsrFileName
 	          );
-	          $request['imageURL'] = $imgUsrFilePath;
-	        	$restoran->update($request->all());
+	          $restoran->imageURL = $imgUsrFilePath;
+	        	$restoran->save();
 	        	return $this->respondCreated('Photo sucessfully uploaded.');
 	        }else{
 	        	return $this->respondCreated('Doesnt provide an image.');

@@ -52,8 +52,8 @@ class PenginapanController extends APIController
           $request->file('imageURL')->move(
                 base_path() . '/public/images/penginapan/', $imgUsrFileName
           );
-          $request['imageURL'] = $imgUsrFilePath;
-        	$penginapan->update($request->all());
+          $penginapan->imageURL = $imgUsrFilePath;
+        	$penginapan->save();
         	return $this->respondCreated('Photo sucessfully uploaded.');
         }else{
         	return $this->respondCreated('Doesnt provide an image.');

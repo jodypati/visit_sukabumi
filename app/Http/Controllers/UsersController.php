@@ -20,7 +20,7 @@ class UsersController extends APIController
 
 	function __construct(UserTransformer $userTransformer){
 		//['only' => ['store','update','destroy','upload','show']]
-		$this->middleware('jwt.auth');
+		//$this->middleware('jwt.auth');
 		$this->userTransformer = $userTransformer;
 		//$this->middleware('jwt.refresh');
 
@@ -62,6 +62,7 @@ class UsersController extends APIController
 	public function upload(Request $request,$id){
 			$avatarURL = null;
 			$user = User::find($id);
+
       if( ! $user ){
 					return $this->respondNotFound('User does not exists');
 			}
@@ -71,26 +72,24 @@ class UsersController extends APIController
           $request->file('avatarURL')->move(
                 base_path() . '/public/images/users/', $imgUsrFileName
           );
-          $request['avatarURL'] = $imgUsrFilePath;
-        	$user->update($request->all());
+          $user->avatarURL = $imgUsrFilePath;
+        	$user->save();
         	return $this->respondCreated('Photo sucessfully uploaded.');
         }else{
         	return $this->respondCreated('Doesnt provide an image.');
         }
 
 	}
-/*
-    public function edit($id)
-    {
-    }
-*/
 
     public function update(Request $request, $id)
     {
-    	$user = User::find($id);
-        if( ! $user ){
-			return $this->respondNotFound('User does not exists');
-		}else{
+			echo $request["name"]."name";
+			$user = User::find($id);
+			print_r($user);
+			if( ! $user ){
+				return $this->respondNotFound('User does not exists');
+			}else{
+
         	$user->update($request->all());
         	return $this->respondCreated('User sucessfully updated.');
     	}

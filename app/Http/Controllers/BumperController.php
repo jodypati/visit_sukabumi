@@ -58,8 +58,8 @@ class BumperController extends APIController
           $request->file('imageURL')->move(
                 base_path() . '/public/images/bumper/', $imgUsrFileName
           );
-          $request['imageURL'] = $imgUsrFilePath;
-        	$bumper->update($request->all());
+          $bumper->imageURL = $imgUsrFilePath;
+        	$bumper->save();
         	return $this->respondCreated('Photo sucessfully uploaded.');
         }else{
         	return $this->respondCreated('Doesnt provide an image.');
