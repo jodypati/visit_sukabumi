@@ -7,14 +7,18 @@ class RestoranTransformer extends Transformer{
 		return [
 
 			'id' => $restoran['id'],
-			'jenis_id'=> $restoran['jenis_id'],
+			'jenis'=> $restoran['jenis'],
 			'nama'=> $restoran['nama'],
 			'alamat'=> $restoran['alamat'],
 			'namaPemilik'=> $restoran['namaPemilik'],
 			'jmlMeja'=> $restoran['jmlMeja'],
 			'jmlKursi'=> $restoran['jmlKursi'],
 			'hidangan'=> $restoran['hidangan'],
-			'telepon'=> $restoran['telepon']
+			'telepon'=> $restoran['telepon'],
+			'keterangan'=> $restoran['keterangan'],
+			'foto_url'=> $restoran['foto_url'],
+			'latitude'=> $restoran['latitude'],
+			'longitude'=> $restoran['longitude']
 		];
 	}
 }

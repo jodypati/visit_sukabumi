@@ -10,12 +10,17 @@ class PenginapanTransformer extends Transformer{
 			'alamat' => $penginapan['alamat'],
 			'namaPemilik' => $penginapan['namaPemilik'],
 			'jmlKamar' => $penginapan['alamat'],
-			'jmlTempatTidur' => $penginapan['avatarURL'],
+			'jmlTempatTidur' => $penginapan['jmlTempatTidur'],
 			'tarif' => $penginapan['tarif'],
 			'bintang' => $penginapan['bintang'],
 			'telepon' => $penginapan['telepon'],
 			'email' => $penginapan['email'],
-			'jenis_id' => $penginapan['jenis_id']
+			'jenis' => $penginapan['jenis'],
+			'fasilitas' => $penginapan['fasilitas'],
+			'keterangan' => $penginapan['keterangan'],
+			'foto_url' => $penginapan['foto_url'],
+			'latitude' => $penginapan['latitude'],
+			'longitude' => $penginapan['longitude']
 		];
 	}
 }
