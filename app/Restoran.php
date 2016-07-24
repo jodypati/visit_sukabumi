@@ -7,11 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Restoran extends Model
 {
     public $table = 'restoran';
-    protected $fillable = [ 'nama','alamat','namaPemilik','jmlMeja','jmlKursi','hidangan','telepon','jenis_id'];
-
-    public function jenis(){
-		    return $this->belongsTo('App\Jenis');
-	  }
+    protected $fillable = [ 'nama', 'alamat', 'keterangan', 'telepon', 'namaPemilik', 'jenis', 'jmlMeja', 'jmlKursi', 'hidangan', 'foto_url', 'latitude', 'longitude'];
 
     public function rating(){
         //return $this->hasMany('\App\BumperRating');
@@ -19,8 +15,5 @@ class Restoran extends Model
     }
     public function komentar(){
         return $this->morphMany('\App\Komentar','komentar');
-    }
-    public function fasilitas(){
-        return $this->belongsToMany('\App\Fasilitas')->withTimestamps();
     }
 }
