@@ -20,7 +20,7 @@ class UsersController extends APIController
 
 	function __construct(UserTransformer $userTransformer){
 		//['only' => ['store','update','destroy','upload','show']]
-		//$this->middleware('jwt.auth');
+		$this->middleware('jwt.auth');
 		$this->userTransformer = $userTransformer;
 		//$this->middleware('jwt.refresh');
 

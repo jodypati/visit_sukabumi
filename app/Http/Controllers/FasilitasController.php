@@ -71,23 +71,23 @@ class FasilitasController extends APIController
 	}
 	public function update(Request $request, $id)
     {
-    	$user = user::find($id);
-        if( ! $user ){
+    	$fasilitas = fasilitas::find($id);
+        if( ! $fasilitas ){
 			return $this->respondNotFound('Fasilitas does not exists');
 		}else{
-        	$user->update($request->all());
+        	$fasilitas->update($request->all());
         	return $this->respondCreated('Fasilitas sucessfully updated.');
     	}
     }
 
     public function destroy($id)
     {
-    	$user = user::find($id);
-        if( ! $user ){
+    	$fasilitas = fasilitas::find($id);
+        if( ! $fasilitas ){
 			return $this->respondNotFound('Fasilitas does not exists');
 		}else{
-    		$user = user::findOrFail($id);
-        	$user->delete();
+    		$fasilitas = fasilitas::findOrFail($id);
+        	$fasilitas->delete();
         	return $this->respondCreated('Fasilitas sucessfully deleted.');
     	}
     }

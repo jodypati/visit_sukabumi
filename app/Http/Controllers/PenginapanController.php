@@ -41,18 +41,18 @@ class PenginapanController extends APIController
 	}
 
 	public function upload(Request $request,$id){
-			$imageURL = null;
+			$foto_url = null;
 			$penginapan = Penginapan::find($id);
       if( ! $penginapan ){
 					return $this->respondNotFound('User does not exists');
 			}
-      if($request->hasFile('imageURL')){
-          $imgUsrFileName = time().'.'.$request->file('imageURL')->getClientOriginalExtension();
+      if($request->hasFile('foto_url')){
+          $imgUsrFileName = time().'.'.$request->file('foto_url')->getClientOriginalExtension();
           $imgUsrFilePath = '/images/penginapan/' .$imgUsrFileName;
-          $request->file('imageURL')->move(
+          $request->file('foto_url')->move(
                 base_path() . '/public/images/penginapan/', $imgUsrFileName
           );
-          $penginapan->imageURL = $imgUsrFilePath;
+          $penginapan->foto_url = $imgUsrFilePath;
         	$penginapan->save();
         	return $this->respondCreated('Photo sucessfully uploaded.');
         }else{
