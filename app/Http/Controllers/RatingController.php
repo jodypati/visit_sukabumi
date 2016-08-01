@@ -54,9 +54,9 @@ class RatingController extends APIController
 			return $this->respondNotFound('rating does not exists');
 		}
 
-		return $this->respond([
+		return $this->respond(
 			$this->ratingTransformer->transform($rating)
-		]);
+		);
 
 	}
 

@@ -130,9 +130,9 @@ class BumperController extends APIController
 			return $this->respondNotFound('penginapan does not exists');
 		}
 
-		return $this->respond([
+		return $this->respond(
 			$this->penginapanTransformer->transform($bumper)
-		]);
+		);
 
 	}
 

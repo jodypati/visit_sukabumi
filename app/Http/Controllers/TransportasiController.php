@@ -68,9 +68,9 @@ class TransportasiController extends APIController
 			return $this->respondNotFound('Transportasi does not exists');
 		}
 
-		return $this->respond([
+		return $this->respond(
 				$this->transportasiTransformer->transform($transportasi)
-		]);
+		);
 	}
 
 	public function update(Request $request, $id)

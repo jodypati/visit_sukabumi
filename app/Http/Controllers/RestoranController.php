@@ -127,9 +127,9 @@ class RestoranController extends APIController
 			return $this->respondNotFound('Restoran does not exists');
 		}
 
-		return $this->respond([
+		return $this->respond(
 			$this->restoranTransformer->transform($restoran)
-		]);
+		);
 	}
 
 

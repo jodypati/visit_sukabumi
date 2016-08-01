@@ -68,9 +68,9 @@ class ObjekWisataController extends APIController
 			return $this->respondNotFound('ObjekWisata does not exists');
 		}
 
-		return $this->respond([
+		return $this->respond(
 				$this->objek_wisataTransformer->transform($objek_wisata)
-		]);
+		);
 	}
 
 	public function update(Request $request, $id)

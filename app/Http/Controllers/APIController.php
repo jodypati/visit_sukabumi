@@ -76,12 +76,12 @@ class APIController extends Controller{
 	}
 
 	public function respondWithError($message){
-		return $this->respond([
+		return $this->respond(
 			'error' => [
 				'message' => $message,
 				'status_code' => $this->getStatusCode()
 			]
-		]);
+		);
 	}
 
 	public function respondNotFound($message = 'Not Found!'){
@@ -93,9 +93,9 @@ class APIController extends Controller{
 	}
 
 	public function respondCreated($message){
-		return $this->setStatusCode(201)->respond([
+		return $this->setStatusCode(201)->respond(
 			'message' => $message,
-		]);
+		);
 	}
 
 	protected function respondWithPagination(Paginator $authors, $data){

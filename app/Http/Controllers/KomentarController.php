@@ -54,9 +54,9 @@ class KomentarController extends APIController
 			return $this->respondNotFound('komentar does not exists');
 		}
 
-		return $this->respond([
+		return $this->respond(
 			$this->komentarTransformer->transform($komentar)
-		]);
+		);
 
 	}
 

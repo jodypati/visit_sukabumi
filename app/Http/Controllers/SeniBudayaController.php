@@ -68,9 +68,9 @@ class SeniBudayaController extends APIController
 			return $this->respondNotFound('SeniBudaya does not exists');
 		}
 
-		return $this->respond([
+		return $this->respond(
 				$this->seni_budayaTransformer->transform($seni_budaya)
-		]);
+		);
 	}
 
 	public function update(Request $request, $id)

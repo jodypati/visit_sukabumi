@@ -60,9 +60,9 @@ class FasilitasController extends APIController
 			return $this->respondNotFound('Fasilitas does not exists');
 		}
 
-		return $this->respond([
+		return $this->respond(
 				$this->fasilitasTransformer->transform($fasilitas)
-		]);
+		);
 		//return Response::json([
 			//'data' => $fasilitas->toArray()
 			//'data' => $this->transform($fasilitas->toArray())

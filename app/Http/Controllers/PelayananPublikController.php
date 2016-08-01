@@ -68,9 +68,9 @@ class PelayananPublikController extends APIController
 			return $this->respondNotFound('PelayananPublik does not exists');
 		}
 
-		return $this->respond([
+		return $this->respond(
 				$this->pelayananPublikTransformer->transform($pelayananPublik)
-		]);
+		);
 	}
 
 	public function update(Request $request, $id)

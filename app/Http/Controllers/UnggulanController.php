@@ -68,9 +68,9 @@ class UnggulanController extends APIController
     //$unggulan = $id2 ? Unggulan::findOrFail($id)->penginapan->find($id2) : Unggulan::find($id)->penginapan;
     if($id2){
       $unggulan = Unggulan::findOrFail($id)->penginapan->find($id2);
-      return $this->respond([
+      return $this->respond(
   			$this->unggulanTransformer->transform($unggulan)
-  		]);
+  		);
     }else{
       $unggulan = Unggulan::find($id)->penginapan;
       return Response::json(
@@ -92,9 +92,9 @@ class UnggulanController extends APIController
 			return $this->respondNotFound('Unggulan does not exists');
 		}
 
-		return $this->respond([
+		return $this->respond(
 				$this->unggulanTransformer->transform($unggulan)
-		]);
+		);
 	}
 
 	public function update(Request $request, $id)

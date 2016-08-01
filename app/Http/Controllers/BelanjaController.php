@@ -68,9 +68,9 @@ class BelanjaController extends APIController
 			return $this->respondNotFound('Belanja does not exists');
 		}
 
-		return $this->respond([
+		return $this->respond(
 				$this->belanjaTransformer->transform($belanja)
-		]);
+		);
 	}
 
 	public function update(Request $request, $id)

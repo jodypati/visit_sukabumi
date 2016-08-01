@@ -68,9 +68,9 @@ class AktivitasController extends APIController
 			return $this->respondNotFound('Aktivitas does not exists');
 		}
 
-		return $this->respond([
+		return $this->respond(
 				$this->aktivitasTransformer->transform($aktivitas)
-		]);
+		);
 	}
 
 	public function update(Request $request, $id)
